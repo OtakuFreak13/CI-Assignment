@@ -11,6 +11,15 @@ TEST(FirstTest, first)
     EXPECT_EQ(0, 0);
 }
 
+int Adding(int a, int b)
+{
+    return a + b;
+}
+
+TEST(Math, addition)
+{
+    EXPECT_EQ(4, Adding(2, 2));
+}
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
