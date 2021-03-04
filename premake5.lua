@@ -1,5 +1,5 @@
 workspace "CI-Assignment"
-    architecture "x64"
+    architecture "x86"
     configurations { "Debug", "Release" }
     startproject "CI-Assignment"
     systemversion "latest"
