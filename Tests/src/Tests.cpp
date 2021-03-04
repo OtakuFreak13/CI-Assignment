@@ -1,11 +1,14 @@
-// Tests.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
-#include <iostream>
 
-int main()
+#include <gtest/gtest.h>
+int main(int argc, char** argv)
 {
-    std::cout << "Hello World!\n";
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+TEST(FirstTest, first)
+{
+    EXPECT_EQ(0, 0);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
