@@ -20,7 +20,9 @@ project "Tests"
     links {
         "CI-Assignment", "GoogleTest"
     }
-    includedirs "googletest/googletest/include"
+    includedirs {
+        "googletest/googletest/include", "CI-Assignment" 
+    }
 
 project "GoogleTest"
     kind "staticLib"

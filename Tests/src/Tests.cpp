@@ -1,24 +1,31 @@
 
 
 #include <gtest/gtest.h>
+#include "src/CI-Assignment.h"
 int main(int argc, char** argv)
 {
+
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-TEST(FirstTest, first)
+class AssigmentTests : public ::testing::Test
 {
-    EXPECT_EQ(0, 0);
+public:
+    AssignmentMain ass;
+    void SetUp()
+    {
+        ass = AssignmentMain();
+    }
+};
+
+TEST_F(AssigmentTests, intMath)
+{
+    EXPECT_EQ(2, ass.addInt(1, 1));
 }
 
-int Adding(int a, int b)
+TEST_F(AssigmentTests, floatMath)
 {
-    return a + b;
-}
-
-TEST(Math, addition)
-{
-    EXPECT_EQ(4, Adding(2, 2));
+    EXPECT_EQ(2, ass.divFloat(4, 2));
 }
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
