@@ -21,6 +21,7 @@ public:
 TEST_F(AssigmentTests, intMath)
 {
     EXPECT_EQ(2, ass.addInt(1, 1));
+    EXPECT_EQ(6, ass.subInt(10, 4));
 }
 
 TEST_F(AssigmentTests, floatMath)
