@@ -10,24 +10,37 @@ int main(int argc, char** argv)
 }
 class AssigmentTests : public ::testing::Test
 {
-public:
+protected:
+    AssigmentTests()
+    {
+
+    }
+    ~AssigmentTests()
+    {
+
+    }
     AssignmentMain ass;
-    void SetUp()
+    void SetUp() override
     {
         ass = AssignmentMain();
     }
+    //void TearDown() override
+    //{
+    //    delete ass;
+    //}
 };
 
 TEST_F(AssigmentTests, intMath)
 {
     EXPECT_EQ(2, ass.addInt(1, 1));
-    EXPECT_EQ(6, ass.subInt(10, 4));
+    //EXPECT_EQ(6, ass.subInt(10, 4));
 }
+//
+//TEST_F(AssigmentTests, floatMath)
+//{
+//    EXPECT_EQ(2, ass.divFloat(4, 2));
+//}
 
-TEST_F(AssigmentTests, floatMath)
-{
-    EXPECT_EQ(2, ass.divFloat(4, 2));
-}
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
