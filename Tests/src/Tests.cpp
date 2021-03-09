@@ -34,7 +34,19 @@ TEST_F(MathTests, intAddition)
 
     // negative tests
     EXPECT_NE(5, ass.addInt(5, 5));
-    EXPECT_NE(599, ass.addInt(500,100));
+    EXPECT_NE(599, ass.addInt(500, 100));
+}
+
+TEST_F(MathTests, intSubtraction)
+{
+    // positive tests
+    EXPECT_EQ(0, ass.subInt(1, 1));
+    EXPECT_EQ(-7, ass.subInt(1, 8));
+    EXPECT_EQ(6, ass.subInt(14, 8));
+
+    // negative tests
+    EXPECT_NE(10, ass.subInt(5, 5));
+    EXPECT_NE(600, ass.subInt(500, 100));
 }
 
 TEST_F(MathTests, intDiv)

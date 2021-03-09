@@ -9,6 +9,7 @@ public:
 	int multInt(int a, int b);
 	float divInt(int a, int b);
 
+
 private:
 
 };
