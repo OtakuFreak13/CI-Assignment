@@ -18,6 +18,11 @@ int AssignmentMath::subInt(int a, int b)
 	return a - b;
 }
 
+int AssignmentMath::multInt(int a, int b)
+{
+	return 0;
+}
+
 float AssignmentMath::divInt(int a, int b)
 {
 	return float(a) / float(b);

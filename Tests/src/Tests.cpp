@@ -49,6 +49,19 @@ TEST_F(MathTests, intSubtraction)
     EXPECT_NE(600, ass.subInt(500, 100));
 }
 
+TEST_F(MathTests, intMult)
+{
+    // positive tests
+    EXPECT_EQ(1, ass.multInt(1, 1));
+    EXPECT_EQ(5, ass.multInt(1, 5));
+    EXPECT_EQ(-16, ass.multInt(2, -8));
+
+    // negative tests
+    EXPECT_NE(10, ass.multInt(5, 5));
+    EXPECT_NE(120000, ass.multInt(60, 200));
+    EXPECT_NE(-30, ass.multInt(-3, -10));
+}
+
 TEST_F(MathTests, intDiv)
 {
     // positive tests
