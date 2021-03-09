@@ -33,7 +33,7 @@ TEST_F(MathTests, intAddition)
     EXPECT_EQ(14, ass.addInt(10, 4));
 
     // negative tests
-    EXPECT_NE(10, ass.addInt(5, 5));
+    EXPECT_NE(5, ass.addInt(5, 5));
     EXPECT_NE(599, ass.addInt(500,100));
 }
 //
