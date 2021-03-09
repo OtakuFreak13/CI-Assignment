@@ -27,7 +27,7 @@ protected:
 
 TEST_F(MathTests, intAddition)
 {
-    // possitive tests
+    // positive tests
     EXPECT_EQ(2, ass.addInt(1, 1));
     EXPECT_EQ(5, ass.addInt(1, 4));
     EXPECT_EQ(14, ass.addInt(10, 4));
@@ -36,11 +36,21 @@ TEST_F(MathTests, intAddition)
     EXPECT_NE(5, ass.addInt(5, 5));
     EXPECT_NE(599, ass.addInt(500,100));
 }
-//
-//TEST_F(AssigmentTests, floatMath)
-//{
-//    EXPECT_EQ(2, ass.divFloat(4, 2));
-//}
+
+TEST_F(MathTests, intDiv)
+{
+    // positive tests
+    EXPECT_EQ(2, ass.divInt(4, 2));
+    EXPECT_EQ(14, ass.divInt(42, 3));
+    EXPECT_EQ(100, ass.divInt(500, 5));
+    EXPECT_EQ(0, ass.divInt(500, 0));
+
+    // negative tests
+    EXPECT_NE(4, ass.divInt(4, 2));
+    EXPECT_NE(2, ass.divInt(4, 2));
+    EXPECT_NE(1, ass.divInt(5, 0));
+    EXPECT_NE(5, ass.divInt(5, 0));
+}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
