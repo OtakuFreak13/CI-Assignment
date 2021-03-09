@@ -40,14 +40,14 @@ TEST_F(MathTests, intAddition)
 TEST_F(MathTests, intDiv)
 {
     // positive tests
-    EXPECT_EQ(2, ass.divInt(4, 2));
-    EXPECT_EQ(14, ass.divInt(42, 3));
-    EXPECT_EQ(100, ass.divInt(500, 5));
-    EXPECT_EQ(0, ass.divInt(500, 0));
+    EXPECT_FLOAT_EQ(2, ass.divInt(4, 2));
+    EXPECT_FLOAT_EQ(3.5f, ass.divInt(7, 2));
+    EXPECT_FLOAT_EQ(100, ass.divInt(500, 5));
+    EXPECT_FLOAT_EQ(0, ass.divInt(0, 500));
 
     // negative tests
-    EXPECT_NE(4, ass.divInt(4, 2));
-    EXPECT_NE(2, ass.divInt(4, 2));
+    EXPECT_NE(7, ass.divInt(7, 2));
+    EXPECT_NE(2, ass.divInt(7, 2));
     EXPECT_NE(1, ass.divInt(5, 0));
     EXPECT_NE(5, ass.divInt(5, 0));
 }
