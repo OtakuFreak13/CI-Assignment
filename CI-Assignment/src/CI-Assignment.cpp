@@ -15,7 +15,7 @@ int AssignmentMath::addInt(int a, int b)
 
 int AssignmentMath::subInt(int a, int b)
 {
-	return 0;
+	return a - b;
 }
 
 float AssignmentMath::divInt(int a, int b)
