@@ -1,13 +1,8 @@
-
-
 #include <gtest/gtest.h>
 #include "src/CI-Assignment.h"
-int main(int argc, char** argv)
-{
+#include "src/CI-Assignment.cpp"
 
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+
 class AssigmentTests : public ::testing::Test
 {
 protected:
@@ -24,10 +19,10 @@ protected:
     {
         ass = AssignmentMain();
     }
-    //void TearDown() override
-    //{
-    //    delete ass;
-    //}
+    void TearDown() override
+    {
+        //delete ass;
+    }
 };
 
 TEST_F(AssigmentTests, intMath)
@@ -51,3 +46,9 @@ TEST_F(AssigmentTests, intMath)
 //   4. Use the Error List window to view errors
 //   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
 //   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+
+int main(int argc, char** argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}

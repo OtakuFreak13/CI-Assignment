@@ -19,7 +19,7 @@ project "Tests"
     language "c++"
     files  { "%{prj.location}/src/**.cpp", "%{prj.location}/src/**.h" }
     links {
-        "CI-Assignment", "GoogleTest"
+        "GoogleTest"
     }
     includedirs {
         "googletest/googletest/include", "CI-Assignment" 
