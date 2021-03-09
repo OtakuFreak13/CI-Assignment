@@ -10,5 +10,5 @@ AssignmentMath::~AssignmentMath()
 
 int AssignmentMath::addInt(int a, int b)
 {
-	return 0;
+	return a + b;
 }
