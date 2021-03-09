@@ -1,9 +1,9 @@
 #pragma once
 
-class AssignmentMain {
+class AssignmentMath {
 public:
-	AssignmentMain();
-	~AssignmentMain();
+	AssignmentMath();
+	~AssignmentMath();
 	int addInt(int a, int b);
 	int subInt(int a, int b);
 	int multInt(int a, int b);

@@ -3,21 +3,21 @@
 #include "src/CI-Assignment.cpp"
 
 
-class AssigmentTests : public ::testing::Test
+class MathTests : public ::testing::Test
 {
 protected:
-    AssigmentTests()
+    MathTests()
     {
 
     }
-    ~AssigmentTests()
+    ~MathTests()
     {
 
     }
-    AssignmentMain ass;
+    AssignmentMath ass;
     void SetUp() override
     {
-        ass = AssignmentMain();
+        ass = AssignmentMath();
     }
     void TearDown() override
     {
@@ -25,10 +25,16 @@ protected:
     }
 };
 
-TEST_F(AssigmentTests, intMath)
+TEST_F(MathTests, intAddition)
 {
+    // possitive tests
     EXPECT_EQ(2, ass.addInt(1, 1));
-    //EXPECT_EQ(6, ass.subInt(10, 4));
+    EXPECT_EQ(5, ass.addInt(1, 4));
+    EXPECT_EQ(14, ass.addInt(10, 4));
+
+    // negative tests
+    EXPECT_NE(10, ass.addInt(5, 5));
+    EXPECT_NE(599, ass.addInt(500,100));
 }
 //
 //TEST_F(AssigmentTests, floatMath)

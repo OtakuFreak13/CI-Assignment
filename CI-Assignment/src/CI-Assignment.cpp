@@ -1,14 +1,14 @@
 #include "CI-Assignment.h"
 
-AssignmentMain::AssignmentMain()
+AssignmentMath::AssignmentMath()
 {
 }
 
-AssignmentMain::~AssignmentMain()
+AssignmentMath::~AssignmentMath()
 {
 }
 
-int AssignmentMain::addInt(int a, int b)
+int AssignmentMath::addInt(int a, int b)
 {
 	return 0;
 }
