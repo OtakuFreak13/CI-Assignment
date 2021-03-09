@@ -9,6 +9,7 @@ workspace "CI-Assignment"
 project "CI-Assignment"
     location "CI-Assignment"
     kind "ConsoleApp"
+    staticruntime "On"
     language "c++"
     files  { "%{prj.location}/src/**.cpp", "%{prj.location}/src/**.h" }
 
