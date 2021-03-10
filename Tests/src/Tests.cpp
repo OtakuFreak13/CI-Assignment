@@ -41,7 +41,6 @@ TEST_F(MathTests, intAddition)
 
     // negative tests
     EXPECT_THROW(ass.addInt(5, INT_MAX), std::overflow_error);
-    // in ascii s = 115, so 115 + 5 = 120. We dont want that as output.
     EXPECT_THROW(ass.addInt('p', 10), std::range_error);
 }
 
@@ -55,10 +54,7 @@ TEST_F(MathTests, intSubtraction)
 
 
     // negative tests
-    // not using std::overflow since it does not print out my error messages
     EXPECT_THROW(ass.subInt(INT_MIN, 3), std::underflow_error);
-    // in ascii e = 101, so 101 + 2 = 103. We dont want that as output.
-    EXPECT_NE(103, ass.subInt('e', 2));
     EXPECT_THROW(ass.subInt('b', 9), std::range_error);
 }
 
