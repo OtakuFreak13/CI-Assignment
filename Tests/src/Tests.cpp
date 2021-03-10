@@ -2,7 +2,9 @@
 #include "src/CI-Assignment.h"
 #include "src/CI-Assignment.cpp"
 
-
+//          ----
+//       Math Tests
+//          ----
 class MathTests : public ::testing::Test
 {
 protected:
@@ -10,48 +12,57 @@ protected:
     {
 
     }
+
     ~MathTests()
     {
 
     }
+
     AssignmentMath ass;
+
     void SetUp() override
     {
         ass = AssignmentMath();
     }
+
     void TearDown() override
     {
-        //delete ass;
+        
     }
 };
 
 TEST_F(MathTests, intAddition)
 {
-    // positive tests
+    // happy path tests
     EXPECT_EQ(2, ass.addInt(1, 1));
     EXPECT_EQ(5, ass.addInt(1, 4));
-    EXPECT_EQ(14, ass.addInt(10, 4));
+    EXPECT_EQ(6, ass.addInt(10, -4));
+    EXPECT_EQ(9, ass.addInt('3', 6));
 
     // negative tests
-    EXPECT_NE(5, ass.addInt(5, 5));
-    EXPECT_NE(599, ass.addInt(500, 100));
+    EXPECT_EQ(NULL, ass.addInt(5, INT_MAX));
+    // in ascii s = 115, so 115 + 5 = 120. We dont want that as output.
+    EXPECT_NE(120, ass.addInt('s', 5));
+    EXPECT_DEATH(ass.addInt('s', 10), "Error: Wrong input! Please input 'int' or 'char' whole integer numbers but NOT 'char' letters!");
 }
 
 TEST_F(MathTests, intSubtraction)
 {
-    // positive tests
+    // happy path tests
     EXPECT_EQ(0, ass.subInt(1, 1));
     EXPECT_EQ(-7, ass.subInt(1, 8));
-    EXPECT_EQ(6, ass.subInt(14, 8));
+    EXPECT_EQ(22, ass.subInt(14, -8));
 
     // negative tests
-    EXPECT_NE(10, ass.subInt(5, 5));
-    EXPECT_NE(600, ass.subInt(500, 100));
+    EXPECT_EQ(NULL, ass.subInt(-INT_MAX, 3));
+    // in ascii e = 101, so 101 + 2 = 103. We dont want that as output.
+    EXPECT_NE(103, ass.subInt('e', 2));
+    EXPECT_DEATH(ass.subInt('e', 9), "Error: Wrong input! Please input 'int' or 'char' whole integer numbers but NOT 'char' letters!");
 }
 
 TEST_F(MathTests, intMult)
 {
-    // positive tests
+    // happy path tests
     EXPECT_EQ(1, ass.multInt(1, 1));
     EXPECT_EQ(5, ass.multInt(1, 5));
     EXPECT_EQ(-16, ass.multInt(2, -8));
@@ -64,7 +75,7 @@ TEST_F(MathTests, intMult)
 
 TEST_F(MathTests, intDiv)
 {
-    // positive tests
+    // happy path tests
     EXPECT_FLOAT_EQ(2, ass.divInt(4, 2));
     EXPECT_FLOAT_EQ(3.5f, ass.divInt(7, 2));
     EXPECT_FLOAT_EQ(100, ass.divInt(500, 5));
@@ -76,6 +87,31 @@ TEST_F(MathTests, intDiv)
     EXPECT_NE(1, ass.divInt(5, 0));
     EXPECT_NE(5, ass.divInt(5, 0));
 }
+
+TEST_F(MathTests, integratedTests)
+{
+    // happy path tests
+    EXPECT_EQ(24, ass.addInt(ass.subInt(5, 2), ass.multInt(3, 7)));
+    EXPECT_EQ(-28, ass.multInt(ass.addInt(5, 2), ass.subInt(3, 7)));
+    EXPECT_EQ(-750, ass.multInt(ass.divInt(45, 3), ass.multInt(5, -10)));
+    EXPECT_EQ(10, 
+        ass.divInt(
+            ass.multInt(
+                ass.divInt(45, 3), ass.multInt(5, -10)), 
+            ass.addInt(
+                ass.multInt(7, -10), -5)));
+
+    // negative tests
+    EXPECT_NE(0, ass.divInt(ass.multInt(5, 2), ass.addInt(-3, 3)));
+}
+//          ----
+//      Math Tests end
+//          ----
+
+
+
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
@@ -93,3 +129,19 @@ int main(int argc, char** argv)
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
+
+
+// Collection of google test commands for me to remember and later use
+/*
+    ASSERT_EXIT(statement, predicate, expected_message)
+    EXPECT_EXIT(statement, predicate, expected_message)
+    ex:
+    EXPECT_EXIT(ass.addInt('s', 4), ::testing::ExitedWithCode(-1), "Error: Wrong input! Please input 'int' and not 'char' values.");
+    
+    ASSERT_DEATH(statement, expected_message)
+    EXPECT_DEATH(statement, expected_message)
+    ex:
+    EXPECT_DEATH(ass.addInt('s', 4), "Error: Wrong input! Please input 'int' and not 'char' values.");
+
+
+*/
