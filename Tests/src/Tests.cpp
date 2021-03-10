@@ -40,10 +40,9 @@ TEST_F(MathTests, intAddition)
     EXPECT_EQ(9, ass.addInt('3', 6));
 
     // negative tests
-    EXPECT_EQ(NULL, ass.addInt(5, INT_MAX));
+    EXPECT_THROW(ass.addInt(5, INT_MAX), std::overflow_error);
     // in ascii s = 115, so 115 + 5 = 120. We dont want that as output.
-    EXPECT_NE(120, ass.addInt('s', 5));
-    EXPECT_DEATH(ass.addInt('s', 10), "Error: Wrong input! Please input 'int' or 'char' whole integer numbers but NOT 'char' letters!");
+    EXPECT_THROW(ass.addInt('p', 10), std::range_error);
 }
 
 TEST_F(MathTests, intSubtraction)
@@ -52,12 +51,15 @@ TEST_F(MathTests, intSubtraction)
     EXPECT_EQ(0, ass.subInt(1, 1));
     EXPECT_EQ(-7, ass.subInt(1, 8));
     EXPECT_EQ(22, ass.subInt(14, -8));
+    EXPECT_EQ(-1, ass.subInt('2', 3));
+
 
     // negative tests
-    EXPECT_EQ(NULL, ass.subInt(-INT_MAX, 3));
+    // not using std::overflow since it does not print out my error messages
+    EXPECT_THROW(ass.subInt(INT_MIN, 3), std::underflow_error);
     // in ascii e = 101, so 101 + 2 = 103. We dont want that as output.
     EXPECT_NE(103, ass.subInt('e', 2));
-    EXPECT_DEATH(ass.subInt('e', 9), "Error: Wrong input! Please input 'int' or 'char' whole integer numbers but NOT 'char' letters!");
+    EXPECT_THROW(ass.subInt('b', 9), std::range_error);
 }
 
 TEST_F(MathTests, intMult)
