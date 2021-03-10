@@ -111,10 +111,26 @@ int AssignmentMath::subInt(char a, char b)
 
 int AssignmentMath::multInt(int a, int b)
 {
+	// If one number is -1 and another is INT_MIN, multiplying them we get abs(INT_MIN) which is 1 higher than INT_MAX
+	if ((a == -1) && (b == INT_MIN) || (b == -1) && (a == INT_MIN)) /* `a * x` (or `a / x`) can overflow */
+	{
+		std::string str1 = "Error: Potential overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n";
+		std::string str2 = "If one number is -1 and another is INT_MIN, multiplying them we get abs(INT_MIN) which is 1 higher than INT_MAX \n";
+		std::string strSum = str1 + str2;
+		throw std::overflow_error(strSum);
+	}
+	else if (a > (INT_MAX / b) || a < (INT_MIN / b))
+	{
+		throw std::overflow_error("Error: Overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n");
+	}
 	return a * b;
 }
 
 float AssignmentMath::divInt(int a, int b)
 {
+	if (b == 0)
+	{
+		throw std::range_error("Error: Divided by ZERO! Division by ZERO is undefined. Please do not put '0' as second integer of divInt()!");
+	}
 	return float(a) / float(b);
 }

@@ -77,7 +77,7 @@ TEST_F(MathTests, intMult)
     // check that negative * negative =/= negative
     EXPECT_NE(-30, ass.multInt(-3, -10));
     // handle overflow
-    EXPECT_THROW(ass.multInt(9999, 10000000), std::range_error);
+    EXPECT_THROW(ass.multInt(9999, 10000000), std::overflow_error);
 }
 
 TEST_F(MathTests, intDiv)
