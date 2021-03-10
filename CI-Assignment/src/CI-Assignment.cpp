@@ -114,14 +114,30 @@ int AssignmentMath::multInt(int a, int b)
 	// If one number is -1 and another is INT_MIN, multiplying them we get abs(INT_MIN) which is 1 higher than INT_MAX
 	if ((a == -1) && (b == INT_MIN) || (b == -1) && (a == INT_MIN)) /* `a * x` (or `a / x`) can overflow */
 	{
-		std::string str1 = "Error: Potential overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n";
+		std::string str1 = "Error Mult1: Potential overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n";
 		std::string str2 = "If one number is -1 and another is INT_MIN, multiplying them we get abs(INT_MIN) which is 1 higher than INT_MAX \n";
 		std::string strSum = str1 + str2;
 		throw std::overflow_error(strSum);
 	}
-	else if (a > (INT_MAX / b) || a < (INT_MIN / b))
+	// Overflow if a and b are of the same sign e.g. both negative or both positive
+	else if ((a > 0 && b > 0 && a > (INT_MAX / b)) || (a < 0 && b < 0 && a > (INT_MAX / b)))
 	{
-		throw std::overflow_error("Error: Overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n");
+		throw std::overflow_error("Error Mult2: Overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n");
+	}
+	// overflow if one of a or b is negative while the other positive
+	else if ((a > 0 && b < 0 || a < 0 && b > 0)&& a > (INT_MAX / -b))
+	{
+		throw std::overflow_error("Error Mult3: Overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n");
+	}
+	// underflow if a and b are of the same sign e.g. both negative or both positive
+	else if ((a > 0 && b > 0 && a < (INT_MIN / b)) || (a < 0 && b < 0 && a < (INT_MIN / b)))
+	{
+		throw std::underflow_error("Error Mult4: Overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n");
+	}
+	// undeflow if one of a or b is negative while the other positive
+	else if ((a > 0 && b < 0 || a < 0 && b > 0) && a < (INT_MIN / -b))
+	{
+		throw std::underflow_error("Error Mult5: Overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n");
 	}
 	return a * b;
 }

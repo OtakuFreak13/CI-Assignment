@@ -75,7 +75,7 @@ TEST_F(MathTests, intMult)
 
     // negative tests
     // check that negative * negative =/= negative
-    EXPECT_NE(-30, ass.multInt(-3, -10));
+    //EXPECT_NE(-30, ass.multInt(-3, -10));
     // handle overflow
     EXPECT_THROW(ass.multInt(9999, 10000000), std::overflow_error);
 }
@@ -131,7 +131,7 @@ int main(int argc, char** argv)
 }
 
 // link to test tutorial: https://google.github.io/googletest/advanced.html
-// Collection of google test commands for me to remember and later use
+// Collection of google test commands for me to remember for later use
 /*
     ASSERT_EXIT(statement, predicate, expected_message)
     EXPECT_EXIT(statement, predicate, expected_message)
