@@ -94,6 +94,8 @@ TEST_F(MathTests, intDiv)
     // negative tests
     // check that negative / negative =/= negative
     EXPECT_NE(-7, ass.divInt(-14, -2));
+    // check overflow when INT_MIN / -1
+    EXPECT_THROW(ass.divInt(INT_MIN, -1), std::range_error);
     // handle deivision by Zero
     EXPECT_THROW(ass.divInt(5, 0), std::range_error);
 }
