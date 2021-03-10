@@ -144,6 +144,14 @@ int AssignmentMath::multInt(int a, int b)
 
 float AssignmentMath::divInt(int a, int b)
 {
+	// If one number is -1 and another is INT_MIN, dividing them we get abs(INT_MIN) which is 1 higher than INT_MAX
+	if ((a == -1) && (b == INT_MIN) || (b == -1) && (a == INT_MIN)) /* `a * x` (or `a / x`) can overflow */
+	{
+		std::string str1 = "Error Div1: Potential overflow! Please avoid the use of values near 'INT_MAX' or 'INT_MIN'!\n";
+		std::string str2 = "If one number is -1 and another is INT_MIN, dividing them we get abs(INT_MIN) which is 1 higher than INT_MAX \n";
+		std::string strSum = str1 + str2;
+		throw std::overflow_error(strSum);
+	}
 	if (b == 0)
 	{
 		throw std::range_error("Error: Divided by ZERO! Division by ZERO is undefined. Please do not put '0' as second integer of divInt()!");
