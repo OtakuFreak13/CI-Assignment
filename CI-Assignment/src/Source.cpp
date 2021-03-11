@@ -9,23 +9,6 @@ int main()
     std::cout << "Hello World!\n";
 }
 
-class AssignmentSimUI {
-public:
-	AssignmentSimUI();
-	~AssignmentSimUI();
-	int addInt(int a, int b);
-	int subInt(int a, int b);
-	int multInt(int a, int b);
-	float divInt(int a, int b);
-	std::string boo;
-
-	int interfaceInput(std::string mathFuc, int userInput);
-	int interfaceInput(std::string mathFuc, char userInput);
-	int interfaceInput(std::string mathFuc, std::string userInput);
-private:
-
-};
-
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
